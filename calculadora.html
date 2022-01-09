@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Atividade de fixação</title>
+        <meta name="author" content="Yohan Marques">
+        <meta name="description" content="Atividade 08/01/2022">
+        <meta name="keywords" content="DOM, Manipulação, Atividade">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap" rel="stylesheet">  
+
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+                height: 100vh;
+                overflow:hidden;
+                background-image: url(../arquivos_necessarios/93239.jpg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size:cover;
+                
+            }
+            
+            .calculadora {
+                margin-top: 40px;
+                border: solid 1px rgb(19, 19, 19);
+                background-color: #26282a;
+                border-radius: 10px;
+                box-shadow: 1px 1px 5px rgb(17, 17, 17);
+                padding: 15px 5px;
+                
+                
+                
+            }
+            button{
+                color: white;
+                background: #102d33;
+                width: 60px;
+                height: 50px;
+                border: 1px;
+                box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.986);
+                border-radius: 5px;
+                margin: 5px;
+                transition: .3s ease-in-out;
+                font-size: 20px;
+                font-family:   "The+Nautigal";
+            }
+            button:hover{
+                cursor: pointer;
+                background-color: #173e4e ;
+                
+            }
+            .C{
+                width: 130px;
+            }
+          
+            
+            .form-control{
+                width: 250px;
+                height: 35px;
+                margin: 15px 0;
+                border-radius: 5px;
+                
+                
+            }
+            input{
+                background-color: #f1faee;
+                text-align: end;
+                border: none;
+                padding: 7px;
+                font-size: 23px;
+                
+            }
+            .igual{
+                height: 110px;
+            }
+            .primeiro{
+                display: flex;
+                
+            }
+            .segundo{
+                display: flex;
+                
+            }
+            .terceiro{
+                display: flex;
+                
+            }
+           .quarto{
+               display: flex;
+               position: relative;
+               
+           }
+            .quinto{
+                display: flex;
+                height: 60px;
+                position:absolute;
+                top: 59px;
+                
+                
+            }
+
+            .num0{
+                width: 130px;
+            }
+          
+           
+           
+           
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+
+                <div class="calculadora">
+                    <div class="base">
+
+                        <input id="resultado" type="text" class="form-control" placeholder="0" disabled="disabled">
+                        
+                        <div class="primeiro">
+                          <button type="button" onclick="calcular('acao','c')" class="C">C</button>
+                          <button type="button" onclick="calcular('acao','/')" class="divisao">/</button>
+                          <button type="button" onclick="calcular('acao','*')" class="multiplicacao">x</button>
+                        </div>
+            
+                        <div class="segundo">
+                          <button type="button" onclick="calcular('valor', 7)" class="num7">7</button>
+                          <button type="button" onclick="calcular('valor', 8)" class="num8">8</button>
+                          <button type="button" onclick="calcular('valor', 9)" class="num9">9</button>
+                          <button type="button" onclick="calcular('acao','-')" class="subtracao">-</button>
+                        </div>
+                        
+                        <div class="terceiro">
+                          <button type="button" onclick="calcular('valor', 4)" class="num4">4</button>
+                          <button type="button" onclick="calcular('valor', 5)" class="num5">5</button>
+                          <button type="button" onclick="calcular('valor', 6)" class="num6">6</button>
+                          <button type="button" onclick="calcular('acao','+')" class="soma">+</button>
+                        </div>
+            
+                        <div class="quarto">
+                          <button type="button" onclick="calcular('valor', 1)" class="num1">1</button>
+                          <button type="button" onclick="calcular('valor', 2)" class="num2">2</button>
+                          <button type="button" onclick="calcular('valor', 3)" class="num3">3</button>
+                          <div class="row">
+                              <button type="button" onclick="calcular('acao','=')" class="igual">=</button>
+                          </div>
+                          <div class="quinto">
+                            <button type="button" onclick="calcular('valor', 0)" class="num0">0</button>
+                            <button type="button" onclick="calcular('acao','.')" class="ponto">.</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function calcular(tipo, valor){
+                    
+                    if(tipo === 'acao'){
+
+                        if(valor === 'c'){
+                            //limpar o visor (id resultado)
+                            document.getElementById('resultado').value = ""
+                        }
+
+                        if(valor == '+' || valor == '-' || valor == '*' || valor == '/' || valor == '.'){
+                            document.getElementById('resultado').value += valor
+                        }
+
+                        if(valor === '='){
+                            var valor_campo = eval(document.getElementById('resultado').value)
+                            
+                            document.getElementById('resultado').value = valor_campo
+                        }
+
+                    } else if(tipo === 'valor'){
+
+                        
+                        document.getElementById('resultado').value += valor
+                    }
+                }
+            </script>
+
+      
+      
+              
+    </body>
+</html>
